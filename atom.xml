@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2020-12-30T03:32:15.959Z</updated>
+    <updated>2020-12-30T03:35:28.945Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,4 +10,97 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[java 将数组均分为多个数组]]></title>
+        <id>https://fikacode.github.io/post/javaListAverage/</id>
+        <link href="https://fikacode.github.io/post/javaListAverage/">
+        </link>
+        <updated>2020-12-30T03:25:57.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="将一组数据平均分成n组">将一组数据平均分成n组</h4>
+<pre><code>/**
+ * 将一组数据平均分成n组
+ *
+ * @param source 要分组的数据源
+ * @param n      平均分成n组
+ * @param &lt;T&gt;
+ * @return
+ */
+public static &lt;T&gt; List&lt;List&lt;T&gt;&gt; averageAssign(List&lt;T&gt; source, int n) {
+    List&lt;List&lt;T&gt;&gt; result = new ArrayList&lt;List&lt;T&gt;&gt;();
+    int remainder = source.size() % n;  //(先计算出余数)
+    int number = source.size() / n;  //然后是商
+    int offset = 0;//偏移量
+    for (int i = 0; i &lt; n; i++) {
+        List&lt;T&gt; value = null;
+        if (remainder &gt; 0) {
+            value = source.subList(i * number + offset, (i + 1) * number + offset + 1);
+            remainder--;
+            offset++;
+        } else {
+            value = source.subList(i * number + offset, (i + 1) * number + offset);
+        }
+        result.add(value);
+    }
+    return result;
+}
+</code></pre>
+<h4 id="将一组数据固定分组每组n个元素">将一组数据固定分组，每组n个元素</h4>
+<pre><code>/**
+ * 将一组数据固定分组，每组n个元素
+ * @param source 要分组的数据源
+ * @param n      每组n个元素
+ * @param &lt;T&gt;
+ * @return
+ */
+public static &lt;T&gt; List&lt;List&lt;T&gt;&gt; fixedGrouping(List&lt;T&gt; source, int n) {
+
+    if (null == source || source.size() == 0 || n &lt;= 0)
+        return null;
+    List&lt;List&lt;T&gt;&gt; result = new ArrayList&lt;List&lt;T&gt;&gt;();
+
+    int sourceSize = source.size();
+    int size = (source.size() / n) + 1;
+    for (int i = 0; i &lt; size; i++) {
+        List&lt;T&gt; subset = new ArrayList&lt;T&gt;();
+        for (int j = i * n; j &lt; (i + 1) * n; j++) {
+            if (j &lt; sourceSize) {
+                subset.add(source.get(j));
+            }
+        }
+        result.add(subset);
+    }
+    return result;
+}
+</code></pre>
+<h4 id="将一组数据固定分组每组n个元素-2">将一组数据固定分组，每组n个元素</h4>
+<pre><code>/**
+ * 将一组数据固定分组，每组n个元素，第二种写法
+ *
+ * @param source 要分组的数据源
+ * @param n      每组n个元素
+ * @param &lt;T&gt;
+ * @return
+ */
+public static &lt;T&gt; List&lt;List&lt;T&gt;&gt; fixedGrouping2(List&lt;T&gt; source, int n) {
+
+    if (null == source || source.size() == 0 || n &lt;= 0)
+        return null;
+    List&lt;List&lt;T&gt;&gt; result = new ArrayList&lt;List&lt;T&gt;&gt;();
+    int remainder = source.size() % n;
+    int size = (source.size() / n);
+    for (int i = 0; i &lt; size; i++) {
+        List&lt;T&gt; subset = null;
+        subset = source.subList(i * n, (i + 1) * n);
+        result.add(subset);
+    }
+    if (remainder &gt; 0) {
+        List&lt;T&gt; subset = null;
+        subset = source.subList(size * n, size * n + remainder);
+        result.add(subset);
+    }
+    return result;
+}
+</code></pre>
+]]></content>
+    </entry>
 </feed>
