@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2020-12-30T08:45:32.754Z</updated>
+    <updated>2020-12-30T09:29:40.946Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,6 +10,39 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[excel强制启用VBA]]></title>
+        <id>https://fikacode.github.io/post/excelForceEnableVba/</id>
+        <link href="https://fikacode.github.io/post/excelForceEnableVba/">
+        </link>
+        <updated>2020-12-30T09:28:22.000Z</updated>
+        <content type="html"><![CDATA[<p>事实上VBA的启用依赖于运行的容器，VBA本身没有强制启用的功能。但是我们可以用另外一种方法来实现 强制启用的功能：如果不启用那么，显示一个页面，提示启用；如果启用就隐藏提示，显示正文。<br>
+大概代码如下：</p>
+<pre><code>Private Sub Workbook_BeforeClose(Cancel As Boolean)
+    Dim sh AsWorksheet
+    ForEach sht In Worksheets
+        If sht.Name&lt;&gt;”Welcome”Then
+           Sheets(sht.Name).Visible= False
+        End If
+    Next
+    Sheets(“Welcome”).Visible= True
+    Sheets(“Welcome”).Select
+    ThisWorkbook.Save
+End Sub
+Private Sub Workbook_Open()
+    Dim sht AsWorksheet
+    ForEach sht In Worksheets
+        If sht.Name&lt;&gt;”Welcome” Then
+            sht.Visible = xlSheetVisible
+        End If
+    Next
+    Worksheets(“Welcome”).Visible= xlSheetVeryHidden
+    ThisWorkbook.Save
+End Sub
+</code></pre>
+<p>代码很好理解：关闭之前，隐藏所有sheet，只显示Welcome；打开文件隐藏Welcome，显示正文。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[spring boot 打包为外置 tomcat (war)]]></title>
         <id>https://fikacode.github.io/post/springbootPackageToWar/</id>
