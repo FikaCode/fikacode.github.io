@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2020-12-30T08:42:31.271Z</updated>
+    <updated>2020-12-30T08:45:32.754Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,6 +10,75 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[spring boot 打包为外置 tomcat (war)]]></title>
+        <id>https://fikacode.github.io/post/springbootPackageToWar/</id>
+        <link href="https://fikacode.github.io/post/springbootPackageToWar/">
+        </link>
+        <updated>2020-12-30T08:43:23.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="修改pom文件">修改pom文件</h2>
+<pre><code>&lt;packaging&gt;war&lt;/packaging&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;!-- 移除嵌入式tomcat插件 --&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+    &lt;version&gt;4.0.1&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="修改application启动类">修改Application启动类</h2>
+<h4 id="修改前">修改前</h4>
+<pre><code>public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>
+<h4 id="修改后">修改后</h4>
+<pre><code>public class Application extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Application.class);
+    }
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>
+<h2 id="特别注意">特别注意</h2>
+<h4 id="如果使用了-websocket那么需要注释掉下面的代码同时添加websocket的支持">如果使用了 <code>websocket</code>，那么需要注释掉下面的代码，同时添加<code>websocket</code>的支持。</h4>
+<pre><code>@Configuration
+public class WebSocketConfig {
+//    @Bean
+//    public ServerEndpointExporter serverEndpointExporter() {
+//        return new ServerEndpointExporter();
+//    }
+}
+</code></pre>
+<pre><code>&lt;!-- https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.websocket&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.websocket-api&lt;/artifactId&gt;
+    &lt;version&gt;1.1&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="如果使用了注解webfilter那么需要使用filterregistrationbean的方式来注册filter">如果使用了注解<code>@WebFilter</code>，那么需要使用<code>FilterRegistrationBean</code>的方式来注册<code>Filter</code>。</h4>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[tomcat 常用的优化]]></title>
         <id>https://fikacode.github.io/post/tomcatOptimizationAndCache/</id>
