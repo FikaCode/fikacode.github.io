@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2020-12-30T05:04:11.550Z</updated>
+    <updated>2020-12-30T08:42:31.271Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,6 +10,81 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[tomcat 常用的优化]]></title>
+        <id>https://fikacode.github.io/post/tomcatOptimizationAndCache/</id>
+        <link href="https://fikacode.github.io/post/tomcatOptimizationAndCache/">
+        </link>
+        <updated>2020-12-30T08:39:26.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="catalina-设置-java-参数">catalina 设置 java 参数</h4>
+<pre><code>set CATALINA_OPTS=-Dfile.encoding=UTF-8 -server -Xms8192m -Xmx8192m -Xmn4096m -XX:SurvivorRatio=10 -XX:MaxTenuringThreshold=15 -XX:NewRatio=2 -XX:+DisableExplicitGC
+</code></pre>
+<blockquote>
+<p>根据环境的配置优化相关参数</p>
+</blockquote>
+<h4 id="serverxml-设置连接池">Server.xml 设置连接池</h4>
+<pre><code>    &lt;Executor 
+       name=&quot;tomcatThreadPool&quot; 
+       namePrefix=&quot;catalina-exec-&quot;
+       maxThreads=&quot;500&quot; 
+       minSpareThreads=&quot;100&quot; 
+       prestartminSpareThreads = &quot;true&quot;
+       maxQueueSize = &quot;100&quot;
+    /&gt;
+</code></pre>
+<h4 id="开启压缩和-nio2">开启压缩和 NIO2</h4>
+<pre><code>  &lt;Connector 
+    	executor=&quot;tomcatThreadPool&quot;
+   	port=&quot;80&quot; 
+   	protocol=&quot;org.apache.coyote.http11.Http11Nio2Protocol&quot; 
+   	connectionTimeout=&quot;20000&quot; 
+   	maxConnections=&quot;10000&quot; 
+   	redirectPort=&quot;8443&quot; 
+   	enableLookups=&quot;false&quot; 
+   	acceptCount=&quot;100&quot; 
+   	maxPostSize=&quot;10485760&quot; 
+   	compression=&quot;on&quot; 
+   	disableUploadTimeout=&quot;true&quot; 
+   	compressionMinSize=&quot;50&quot; 
+   	acceptorThreadCount=&quot;4&quot; 
+   	compressableMimeType=&quot;text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/x-javascript,application/json,image/jpg,application/x-font-ttf,application/x-font-otf,image/svg+xml,image/jpeg,image/png,image/gif,audio/mpeg,video/mp4,font/woff&quot; 
+   	URIEncoding=&quot;utf-8&quot;
+     /&gt;
+</code></pre>
+<h4 id="webxml-设置缓存">web.xml 设置缓存</h4>
+<pre><code>&lt;filter&gt;
+ &lt;filter-name&gt;ExpiresFilter&lt;/filter-name&gt;
+ &lt;filter-class&gt;org.apache.catalina.filters.ExpiresFilter&lt;/filter-class&gt;
+ &lt;init-param&gt;
+    &lt;param-name&gt;ExpiresByType image&lt;/param-name&gt;
+    &lt;param-value&gt;access plus 30 days&lt;/param-value&gt;
+ &lt;/init-param&gt;
+ &lt;init-param&gt;
+    &lt;param-name&gt;ExpiresByType text&lt;/param-name&gt;
+    &lt;param-value&gt;access plus 30 days&lt;/param-value&gt;
+ &lt;/init-param&gt;
+ &lt;init-param&gt;
+    &lt;param-name&gt;ExpiresByType application/javascript&lt;/param-name&gt;
+    &lt;param-value&gt;access plus 30 days&lt;/param-value&gt;
+ &lt;/init-param&gt;
+ &lt;init-param&gt;
+    &lt;param-name&gt;ExpiresByType multipart/form-data&lt;/param-name&gt;
+    &lt;param-value&gt;access plus 30 days&lt;/param-value&gt;
+ &lt;/init-param&gt;
+ &lt;init-param&gt;
+    &lt;param-name&gt;ExpiresByType font/woff&lt;/param-name&gt;
+    &lt;param-value&gt;access plus 30 days&lt;/param-value&gt;
+ &lt;/init-param&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+ &lt;filter-name&gt;ExpiresFilter&lt;/filter-name&gt;
+ &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+ &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;
+&lt;/filter-mapping&gt;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[java 将数组均分为多个数组]]></title>
         <id>https://fikacode.github.io/post/javaListAverage/</id>
