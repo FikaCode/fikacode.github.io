@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2021-01-04T03:34:38.649Z</updated>
+    <updated>2021-01-04T03:34:50.756Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,6 +10,57 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot 在非spring控制的组件获取bean]]></title>
+        <id>https://fikacode.github.io/post/springbootGetBean/</id>
+        <link href="https://fikacode.github.io/post/springbootGetBean/">
+        </link>
+        <updated>2021-01-04T03:33:37.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>/**
+ * @ClassName SpringUtil
+ * @Description Spring 工具类
+ * @Author WFS
+ * @Date 2019/4/3 11:03
+ **/
+
+@Component
+public class SpringUtil implements ApplicationContextAware {
+
+    private static ApplicationContext applicationContext;
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        if (SpringUtil.applicationContext == null) {
+            SpringUtil.applicationContext = applicationContext;
+        }
+    }
+
+    private static ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public static Object getBean(String name) {
+        return getApplicationContext().getBean(name);
+    }
+
+    public static &lt;T&gt; T getBean(Class&lt;T&gt; clazz) {
+        return getApplicationContext().getBean(clazz);
+    }
+
+    public static &lt;T&gt; T getBean(String name, Class&lt;T&gt; clazz) {
+        return getApplicationContext().getBean(name, clazz);
+    }
+
+}
+</code></pre>
+<h4 id="需要注意几点">需要注意几点</h4>
+<blockquote>
+<ol>
+<li><code>SpringUtil</code>需要被Spring Boot 扫描到</li>
+<li>使用的时机需要在<code>spring</code>容器加载完所有Bean以后</li>
+</ol>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Spring Security 自定义权限实现 redis token 登陆验证]]></title>
         <id>https://fikacode.github.io/post/springSecurityTokenLogin/</id>
