@@ -9,7 +9,7 @@
 <meta name="description" content="玻璃晴朗，橘子辉煌">
 <meta name="theme-color" content="#000">
 <title>Spring Security 自定义权限实现 redis token 登陆验证 | Drinker</title>
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/FikaCode/fikacode.github.io@master/favicon.ico?v=1609760734211">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/FikaCode/fikacode.github.io@master/favicon.ico?v=1609811158159">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FikaCode/fikacode.github.io@master/styles/main.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FikaCode/fikacode.github.io@master/media/css/mist.css">
 
@@ -1415,6 +1415,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   </div>
 </div>
             
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'd66422d3295b07cef117',
+    clientSecret: '2c7f613f7801b2f0662c77febbbed703d5eec6af',
+    repo: 'BlogTalk',
+    owner: 'FikaCode',
+    admin: ['FikaCode'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+    
+    
   
 
           </div>
