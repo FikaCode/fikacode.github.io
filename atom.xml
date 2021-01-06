@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://fikacode.github.io</id>
+    <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2021-01-06T06:05:03.313Z</updated>
+    <updated>2021-01-06T07:02:26.009Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://fikacode.github.io"/>
-    <link rel="self" href="http://fikacode.github.io/atom.xml"/>
+    <link rel="alternate" href="https://fikacode.github.io"/>
+    <link rel="self" href="https://fikacode.github.io/atom.xml"/>
     <subtitle>玻璃晴朗，橘子辉煌</subtitle>
-    <logo>http://fikacode.github.io/images/avatar.png</logo>
-    <icon>http://fikacode.github.io/favicon.ico</icon>
+    <logo>https://fikacode.github.io/images/avatar.png</logo>
+    <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Drinker</rights>
     <entry>
         <title type="html"><![CDATA[Spring Boot 在非spring控制的组件获取bean]]></title>
-        <id>http://fikacode.github.io/post/springbootGetBean/</id>
-        <link href="http://fikacode.github.io/post/springbootGetBean/">
+        <id>https://fikacode.github.io/post/springbootGetBean/</id>
+        <link href="https://fikacode.github.io/post/springbootGetBean/">
         </link>
         <updated>2021-01-04T03:33:37.000Z</updated>
         <content type="html"><![CDATA[<pre><code>/**
@@ -63,8 +63,8 @@ public class SpringUtil implements ApplicationContextAware {
     </entry>
     <entry>
         <title type="html"><![CDATA[Spring Security 自定义权限实现 redis token 登陆验证]]></title>
-        <id>http://fikacode.github.io/post/springSecurityTokenLogin/</id>
-        <link href="http://fikacode.github.io/post/springSecurityTokenLogin/">
+        <id>https://fikacode.github.io/post/springSecurityTokenLogin/</id>
+        <link href="https://fikacode.github.io/post/springSecurityTokenLogin/">
         </link>
         <updated>2020-12-30T09:45:32.000Z</updated>
         <content type="html"><![CDATA[<h2 id="前言">前言</h2>
@@ -855,8 +855,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     </entry>
     <entry>
         <title type="html"><![CDATA[excel强制启用VBA]]></title>
-        <id>http://fikacode.github.io/post/excelForceEnableVba/</id>
-        <link href="http://fikacode.github.io/post/excelForceEnableVba/">
+        <id>https://fikacode.github.io/post/excelForceEnableVba/</id>
+        <link href="https://fikacode.github.io/post/excelForceEnableVba/">
         </link>
         <updated>2020-12-30T09:28:22.000Z</updated>
         <content type="html"><![CDATA[<p>事实上VBA的启用依赖于运行的容器，VBA本身没有强制启用的功能。但是我们可以用另外一种方法来实现 强制启用的功能：如果不启用那么，显示一个页面，提示启用；如果启用就隐藏提示，显示正文。<br>
@@ -888,8 +888,8 @@ End Sub
     </entry>
     <entry>
         <title type="html"><![CDATA[spring boot 打包为外置 tomcat (war)]]></title>
-        <id>http://fikacode.github.io/post/springbootPackageToWar/</id>
-        <link href="http://fikacode.github.io/post/springbootPackageToWar/">
+        <id>https://fikacode.github.io/post/springbootPackageToWar/</id>
+        <link href="https://fikacode.github.io/post/springbootPackageToWar/">
         </link>
         <updated>2020-12-30T08:43:23.000Z</updated>
         <content type="html"><![CDATA[<h2 id="修改pom文件">修改pom文件</h2>
@@ -957,8 +957,8 @@ public class WebSocketConfig {
     </entry>
     <entry>
         <title type="html"><![CDATA[tomcat 常用的优化]]></title>
-        <id>http://fikacode.github.io/post/tomcatOptimizationAndCache/</id>
-        <link href="http://fikacode.github.io/post/tomcatOptimizationAndCache/">
+        <id>https://fikacode.github.io/post/tomcatOptimizationAndCache/</id>
+        <link href="https://fikacode.github.io/post/tomcatOptimizationAndCache/">
         </link>
         <updated>2020-12-30T08:39:26.000Z</updated>
         <content type="html"><![CDATA[<h4 id="catalina-设置-java-参数">catalina 设置 java 参数</h4>
@@ -1032,8 +1032,8 @@ public class WebSocketConfig {
     </entry>
     <entry>
         <title type="html"><![CDATA[java 将数组均分为多个数组]]></title>
-        <id>http://fikacode.github.io/post/javaListAverage/</id>
-        <link href="http://fikacode.github.io/post/javaListAverage/">
+        <id>https://fikacode.github.io/post/javaListAverage/</id>
+        <link href="https://fikacode.github.io/post/javaListAverage/">
         </link>
         <updated>2020-12-30T03:25:57.000Z</updated>
         <content type="html"><![CDATA[<h4 id="将一组数据平均分成n组">将一组数据平均分成n组</h4>
