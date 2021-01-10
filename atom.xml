@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2021-01-10T06:36:05.201Z</updated>
+    <updated>2021-01-10T06:40:03.782Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,6 +10,33 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[SSH 管理多个Key文件]]></title>
+        <id>https://fikacode.github.io/post/sshManageKeys/</id>
+        <link href="https://fikacode.github.io/post/sshManageKeys/">
+        </link>
+        <updated>2021-01-10T06:38:36.000Z</updated>
+        <content type="html"><![CDATA[<p>在 ~/.ssh 文件夹下面新建 config，指定key</p>
+<pre><code>Host xxx.xxx.xxx.xxx
+	HostName xxx.xxx.xxx.xxx
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/id_rsa_gitlab
+        User User1
+    
+Host xxx.xxx.xxx.xxx
+        HostName xxx.xxx.xxx.xxx
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/id_rsa_github
+        User User2
+</code></pre>
+<blockquote>
+<p><code>Host</code> 可以是IP或者域名<br>
+<code>HostName</code> 同<code>Host</code><br>
+<code>IdentityFile</code> 对应的Key私钥<br>
+<code>User</code> 私钥对应的用户</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Java request 请求转发]]></title>
         <id>https://fikacode.github.io/post/javaRequestForward/</id>
