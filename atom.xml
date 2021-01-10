@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2021-01-06T07:14:07.862Z</updated>
+    <updated>2021-01-10T06:36:05.201Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[Java request 请求转发]]></title>
+        <id>https://fikacode.github.io/post/javaRequestForward/</id>
+        <link href="https://fikacode.github.io/post/javaRequestForward/">
+        </link>
+        <updated>2021-01-10T06:35:10.000Z</updated>
+        <content type="html"><![CDATA[<p>使用<code>RestTemplate</code>简单实现。</p>
+<pre><code>String body = IOUtils.toString(request.getInputStream(), Charset.forName(request.getCharacterEncoding()));
+Map&lt;String, String[]&gt; parameterMap = request.getParameterMap();
+String method = request.getMethod();
+try {
+	restTemplate.exchange(url,
+                    HttpMethod.valueOf(method),
+                    new HttpEntity&lt;&gt;(body),
+                    Object.class,
+                    parameterMap);
+} catch (RuntimeException ignored) {
+}
+</code></pre>
+<blockquote>
+<p><code>IOUtils</code>是<code>commons-io</code>的包<br>
+<code>url</code>是转发的<code>url</code></p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Spring Boot 在非spring控制的组件获取bean]]></title>
         <id>https://fikacode.github.io/post/springbootGetBean/</id>
