@@ -10,14 +10,14 @@
 <meta name="keywords" content="">
 <meta name="description" content="欢迎访问[Drinker]的个人博客">
 <meta name="author" content="kveln">
-<title>linux | Drinker</title>
+<title>Mysql 5.7 root 密码没法设置的问题 | Drinker</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 <link
   href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
   rel='stylesheet' type='text/css'>
-<link rel="alternate" type="application/rss+xml" title="linux | Drinker » Feed"
+<link rel="alternate" type="application/rss+xml" title="Mysql 5.7 root 密码没法设置的问题 | Drinker » Feed"
   href="https://fikacode.github.io/atom.xml">
 <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
@@ -30,9 +30,66 @@
 
 <script>hljs.initHighlightingOnLoad();</script>
 
+  <meta property="og:description" content="Mysql 5.7 root 密码没法设置的问题" />
+  <meta property="og:url" content="https://fikacode.github.io/post/mysql57SetPassword/" />
+  <meta property="og:locale" content="zh-CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Drinker" />
+  <!-- <script src="../assets/styles/scripts/tocScript.js"></script> -->
 </head>
 
 <body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://fikacode.github.io">Drinker</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/post/about">关于</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1610448184916"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- Page Header -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand" href="https://fikacode.github.io">Drinker</a>
@@ -90,9 +147,18 @@
         
           <!-- 没Title为其他页面Header -->
           
-            <!-- 其他页面（archives、tags、about...）Header -->
-            <div class="sub-site-heading">
-              <h1 class="tag-tl">#linux</h1>
+            <!-- 没Title并且有headerType为Post：文章Header -->
+            <div class="post-heading">
+              <span class="tags">
+                
+                <a href="https://fikacode.github.io/tag/mysql/" class="tag">mysql</a>
+                
+              </span>
+              <h1>Mysql 5.7 root 密码没法设置的问题</h1>
+              <span class="meta">
+                Posted on
+                2021-01-12，1 min read
+              </span>
             </div>
           
         
@@ -100,59 +166,45 @@
     </div>
   </div>
 </header>
-  <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      
-      <!-- 每行的总容器 -->
-      <div class="post-row-container">
-        <!-- 第0层；标题 -->
-        <div class="title-floor">
-          <div class="post-title-container">
-            
+  <!-- Post Content -->
+  <article id="post-content-article">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto post-content-container">
+          
+          <p>问题源于5.7 使用了密码插件，修改root密码可以这样来：</p>
+<ol>
+<li>修改插件：</li>
+</ol>
+<pre><code>update mysql.user set plugin = 'mysql_native_password' where user='root'；
+flush privileges；
+</code></pre>
+<ol start="2">
+<li>更新密码：</li>
+</ol>
+<pre><code>update mysql.user set authentication_string=password('new_password') where user='root'；
+</code></pre>
+
+          <div class="toc-container"></div>
+          
+          <hr />
+          <p class="next-post">下一篇：
             <a href="https://fikacode.github.io/post/sshManageKeys/">
-              <h2 class="post-title">
-                SSH 管理多个Key文件
-              </h2>
+              <span class="post-title">
+                SSH 管理多个Key文件&rarr;
+              </span>
             </a>
+          </p>
+          
+          <div class="comment" style="text-align: center;">
+            
+
+            
+            
           </div>
-        </div>
-        <!-- 第一层：包含文章描述、时间信息、封面图 -->
-        <div class="post-row-first-floor">
-          <div class="post-preview">
-            <h3 class="post-subtitle">
-              
-            </h3>
-            <p class="post-meta">
-              <span class="time">2021-01-10</span>
-              <span>,</span>
-              <span class="post-stats">1 min read</span>
-            </p>
-          </div>
-          
-        </div>
-        <!-- 第二层：下划线、占位标签、tags -->
-        <div class="post-row-sec-floor">
-          <hr>
-          <div class="clearfix"></div>
-          
-          <a href="https://fikacode.github.io/tag/ssh/" class="post-tag">
-            ssh
-          </a>
-          
-          <a href="https://fikacode.github.io/tag/linux/" class="post-tag">
-            linux
-          </a>
-          
         </div>
       </div>
-      </>
-      
-      <!-- 
-       -->
-    </div>
-  </div>
-</div>
+  </article>
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -232,6 +284,7 @@
     }
   })(this));</script>
   
+  <script src="https://fikacode.github.io/media/scripts/tocScript.js"></script>
 </body>
 
 </html>

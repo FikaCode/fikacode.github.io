@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2021-01-10T06:53:59.488Z</updated>
+    <updated>2021-01-12T10:43:09.611Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,6 +10,26 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[Mysql 5.7 root 密码没法设置的问题]]></title>
+        <id>https://fikacode.github.io/post/mysql57SetPassword/</id>
+        <link href="https://fikacode.github.io/post/mysql57SetPassword/">
+        </link>
+        <updated>2021-01-12T10:41:36.000Z</updated>
+        <content type="html"><![CDATA[<p>问题源于5.7 使用了密码插件，修改root密码可以这样来：</p>
+<ol>
+<li>修改插件：</li>
+</ol>
+<pre><code>update mysql.user set plugin = 'mysql_native_password' where user='root'；
+flush privileges；
+</code></pre>
+<ol start="2">
+<li>更新密码：</li>
+</ol>
+<pre><code>update mysql.user set authentication_string=password('new_password') where user='root'；
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[SSH 管理多个Key文件]]></title>
         <id>https://fikacode.github.io/post/sshManageKeys/</id>
