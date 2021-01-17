@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2021-01-12T10:43:09.611Z</updated>
+    <updated>2021-01-17T06:37:56.756Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -10,6 +10,54 @@
     <logo>https://fikacode.github.io/images/avatar.png</logo>
     <icon>https://fikacode.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Drinker</rights>
+    <entry>
+        <title type="html"><![CDATA[Javascript POST方式下载文件 ]]></title>
+        <id>https://fikacode.github.io/post/javascriptPostDownloadFile/</id>
+        <link href="https://fikacode.github.io/post/javascriptPostDownloadFile/">
+        </link>
+        <updated>2021-01-17T06:32:00.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="来自网上">来自网上。</h4>
+<pre><code>postDownLoadFile: function (options) {
+    var config = $.extend(true, { method: 'post' }, options);
+    var $iframe = $('&lt;iframe id=&quot;admin_self_down-file-iframe&quot; /&gt;');
+    var $form = $('&lt;form target=&quot;down-file-iframe&quot; method=&quot;' + config.method + '&quot; /&gt;');
+    $form.attr('action', config.url);
+    for (var key in config.data) {
+        $form.append('&lt;input type=&quot;hidden&quot; name=&quot;' + key + '&quot; value=&quot;' + config.data[key] + '&quot; /&gt;');
+    }
+    $iframe.append($form);
+    $(document.body).append($iframe);
+    $form[0].submit();
+    $iframe.remove();
+}
+</code></pre>
+<p><code>options</code> 中设置url即可。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mysql 5.7 表名大小写、ONLY_FULL_GROUP_BY和中文UTF-8的设置问题]]></title>
+        <id>https://fikacode.github.io/post/mysql57setLowerCaseTableAndSqlModeAndutf8/</id>
+        <link href="https://fikacode.github.io/post/mysql57setLowerCaseTableAndSqlModeAndutf8/">
+        </link>
+        <updated>2021-01-17T06:29:28.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="表名大小写敏感">表名大小写敏感</h4>
+<pre><code>lower_case_table_names=1
+</code></pre>
+<h4 id="only_full_group_by-问题"><code>ONLY_FULL_GROUP_BY</code> 问题</h4>
+<pre><code>sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+</code></pre>
+<h4 id="中文和utf-8设置">中文和<code>UTF-8</code>设置</h4>
+<pre><code>[mysqld]
+character_set_server=utf8
+
+[client]
+default-character-set=utf8
+</code></pre>
+<blockquote>
+<p>以上设置都在配置文件里面修改</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mysql 5.7 root 密码没法设置的问题]]></title>
         <id>https://fikacode.github.io/post/mysql57SetPassword/</id>
@@ -1099,99 +1147,6 @@ public class WebSocketConfig {
  &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
  &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;
 &lt;/filter-mapping&gt;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[java 将数组均分为多个数组]]></title>
-        <id>https://fikacode.github.io/post/javaListAverage/</id>
-        <link href="https://fikacode.github.io/post/javaListAverage/">
-        </link>
-        <updated>2020-12-30T03:25:57.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="将一组数据平均分成n组">将一组数据平均分成n组</h4>
-<pre><code>/**
- * 将一组数据平均分成n组
- *
- * @param source 要分组的数据源
- * @param n      平均分成n组
- * @param &lt;T&gt;
- * @return
- */
-public static &lt;T&gt; List&lt;List&lt;T&gt;&gt; averageAssign(List&lt;T&gt; source, int n) {
-    List&lt;List&lt;T&gt;&gt; result = new ArrayList&lt;List&lt;T&gt;&gt;();
-    int remainder = source.size() % n;  //(先计算出余数)
-    int number = source.size() / n;  //然后是商
-    int offset = 0;//偏移量
-    for (int i = 0; i &lt; n; i++) {
-        List&lt;T&gt; value = null;
-        if (remainder &gt; 0) {
-            value = source.subList(i * number + offset, (i + 1) * number + offset + 1);
-            remainder--;
-            offset++;
-        } else {
-            value = source.subList(i * number + offset, (i + 1) * number + offset);
-        }
-        result.add(value);
-    }
-    return result;
-}
-</code></pre>
-<h4 id="将一组数据固定分组每组n个元素">将一组数据固定分组，每组n个元素</h4>
-<pre><code>/**
- * 将一组数据固定分组，每组n个元素
- * @param source 要分组的数据源
- * @param n      每组n个元素
- * @param &lt;T&gt;
- * @return
- */
-public static &lt;T&gt; List&lt;List&lt;T&gt;&gt; fixedGrouping(List&lt;T&gt; source, int n) {
-
-    if (null == source || source.size() == 0 || n &lt;= 0)
-        return null;
-    List&lt;List&lt;T&gt;&gt; result = new ArrayList&lt;List&lt;T&gt;&gt;();
-
-    int sourceSize = source.size();
-    int size = (source.size() / n) + 1;
-    for (int i = 0; i &lt; size; i++) {
-        List&lt;T&gt; subset = new ArrayList&lt;T&gt;();
-        for (int j = i * n; j &lt; (i + 1) * n; j++) {
-            if (j &lt; sourceSize) {
-                subset.add(source.get(j));
-            }
-        }
-        result.add(subset);
-    }
-    return result;
-}
-</code></pre>
-<h4 id="将一组数据固定分组每组n个元素-2">将一组数据固定分组，每组n个元素</h4>
-<pre><code>/**
- * 将一组数据固定分组，每组n个元素，第二种写法
- *
- * @param source 要分组的数据源
- * @param n      每组n个元素
- * @param &lt;T&gt;
- * @return
- */
-public static &lt;T&gt; List&lt;List&lt;T&gt;&gt; fixedGrouping2(List&lt;T&gt; source, int n) {
-
-    if (null == source || source.size() == 0 || n &lt;= 0)
-        return null;
-    List&lt;List&lt;T&gt;&gt; result = new ArrayList&lt;List&lt;T&gt;&gt;();
-    int remainder = source.size() % n;
-    int size = (source.size() / n);
-    for (int i = 0; i &lt; size; i++) {
-        List&lt;T&gt; subset = null;
-        subset = source.subList(i * n, (i + 1) * n);
-        result.add(subset);
-    }
-    if (remainder &gt; 0) {
-        List&lt;T&gt; subset = null;
-        subset = source.subList(size * n, size * n + remainder);
-        result.add(subset);
-    }
-    return result;
-}
 </code></pre>
 ]]></content>
     </entry>
