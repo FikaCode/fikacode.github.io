@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fikacode.github.io</id>
     <title>Drinker</title>
-    <updated>2021-02-01T09:44:57.573Z</updated>
+    <updated>2021-02-01T10:40:20.710Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fikacode.github.io"/>
     <link rel="self" href="https://fikacode.github.io/atom.xml"/>
@@ -450,9 +450,8 @@ public class CreateImageCode {
 }
 </code></pre>
 <blockquote>
-<p>使用<code>getResult</code>获取答案，效果图</p>
+<p>使用<code>getResult</code>获取答案。</p>
 </blockquote>
-<figure data-type="image" tabindex="1"><img src="https://wangfashuai.top/upload/2020/3/%E6%89%B9%E6%B3%A8%202020-03-06%20175102-316a8a1b5ab0478fb7c7baa8a637876f.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
